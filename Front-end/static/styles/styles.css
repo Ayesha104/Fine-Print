@@ -1,0 +1,390 @@
+body{
+    font: 15px/1.5 Arial, Helvetica,sans-serif;
+    padding:0;
+    margin:0;
+    background-color:#ffffff;
+  }
+  
+  /* Global */
+  .container{
+    width:80%;
+    margin:auto;
+    overflow:hidden;
+  }
+  
+  ul{
+    margin:0;
+    padding:0;
+  }
+  
+  .button_1{
+    height:38px;
+    background:#008282;
+    border:0;
+    padding-left: 20px;
+    padding-right:20px;
+    color:#ffffff;
+  }
+  
+  .dark{
+    padding:10px;
+    background:#f4f4f4; /*change color of sidebar from here*/
+    color:#35424a;
+    margin-top:10px;
+    margin-bottom:10px;
+
+  }
+  
+  /* Header **/
+  header{
+    background:#f4f4f4;
+    color:#35424a;
+    padding-top:20px;
+    min-height:60px;
+    border-bottom:#008282 5px solid;
+    
+  }
+  
+  header a{
+    color:#35424a;
+    text-decoration:none;
+    text-transform: uppercase;
+    font-size:16px;
+  }
+  
+  header li{
+ 
+    display:inline;
+    padding: 0 20px 0 20px;
+  }
+  
+  header #branding{
+    float:left;
+  }
+  
+  header #branding h1{
+    margin:0;
+  }
+  
+  header #branding h1:hover{
+    background-color:white;
+  }
+  
+  header nav{
+    float:right;
+    margin-top:10px;
+    padding-top: 15px;
+  }
+  
+  header .highlight, header .current a{
+    color:#008282;
+    font-weight:bold;
+  }
+  
+  header a:hover{
+    color:#a8a4a4;
+    font-weight:bold;
+  }
+  
+  /* Showcase */
+  #showcase{
+    min-height:350px;
+    background:url('../img/lap.png') no-repeat ;
+    text-align:left;
+    color:#ffffff;
+    border-bottom: #008282 6px solid;
+  }
+  
+  #showcase h1{
+    padding: 0px;
+    margin-top:120px;
+    font-size:45px;
+    margin-bottom:10px;
+  }
+  
+  /*#showcase p{
+    font-size:20px;
+  }*/
+  
+  
+  /* Boxes */
+  #boxes{
+    margin-top:20px;
+  }
+  
+  #boxes .box{
+    float:center;
+    text-align: center;
+    width:100%;
+    padding:20px;
+    font-size: x-large;
+  }
+  /* Sidebar */
+  aside#sidebar{
+    float:right;
+    width:30%;
+    margin-top:10px;
+  }
+  
+  aside#sidebar .quote input, aside#sidebar .quote textarea{
+    width:90%;
+    padding:5px;
+  }
+
+    
+  /*laws*/
+  #laws{
+    width:100%;
+    padding:20px;
+    font-size: 18px;
+
+  }
+
+  #laws .options{
+    font-size: 80px;
+  }
+
+  aside#sidebar h3 {
+    font-size: 23px;
+    padding-left: 10px;
+  }
+  
+  /* Main-col */
+  article#main-col{
+    padding-top: 40px;
+    float:left;
+    width:65%;
+  }
+  
+  /* comp-html */
+  ul#comp-html li{
+    list-style: none;
+    padding:20px;
+    border: #cccccc solid 2px;
+    margin-bottom:9px;
+    background:#e6e6e6;
+  }
+  
+  footer{
+    padding:0px;
+    margin-top:40px;
+    color:#ffffff;
+    background-color:#008282;
+    text-align: center;
+    
+  }
+  
+  footer p a{
+    float:right;
+    
+  }
+  
+
+  
+  .logos{
+      float:left;
+      padding-top: 3px;
+      
+  }
+
+
+  a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(73, 72, 72);
+    padding: 20px, 15px;
+    padding-top: 10px;
+
+    width: 140px;
+    height: 45px;
+    font-size: 20px;
+}
+
+
+  
+  a.button:hover{
+    background: #008282;
+    color:#fff;
+    border-radius: 10px;
+  }
+
+  /* processing, loader */
+  .loader {
+    padding-top: 200px;
+    padding-right: 200px;
+    border: 16px solid #5a5454; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+  }
+
+  .space {
+    padding-top:80px;
+    
+
+
+  }
+  #processingText{
+    font-size: 45px;
+    text-align:center;
+  }
+
+  #circle{
+    padding-left: 388px;
+    padding-top: 50px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Changing the form group bootstrap class to make the text 
+  area larger*/
+  .form-control-lg {
+    height: calc(15em + .375rem + 2px) !important;
+    padding: .125rem .25rem !important;
+    font-size: 1em !important;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+
+/*Policy button*/
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: rgb(73, 72, 72);
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover{
+  background: #008282;
+  color:#fff;
+  border-radius: 10px;
+}
+
+
+textPolicy{
+  width:100px;
+  height: 100px;
+}
+
+/*Compliance*/
+.active-border{
+  position: relative;
+  text-align: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color:#39B4CC;
+  background-image:
+      linear-gradient(91deg, transparent 50%, #A2ECFB 50%),
+      linear-gradient(90deg, #A2ECFB 50%, transparent 50%);
+}
+
+.container-img-main {
+  position: relative;
+  padding-left: 40%;
+}
+
+.centered-main {
+  padding-left: 70%;
+  padding-top: 3%;
+  position: absolute;
+  font-size: 30px;
+  bottom: 10%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+}
+
+.container-img {
+  position: relative;
+  color: #3f3737;
+}
+
+.centered {
+  position: absolute;
+  font-size: 30px;
+  bottom: 10%;
+  left: 13%;
+  transform: translate(-50%, -50%);
+}
+
+.compLabel{
+  font-size: 30px;
+  text-align:center;
+  padding-left: 30%;
+}
+.GDPRBox{
+  margin:20%;
+  background-color: #A2ECFB;
+  /*border: 5px solid;*/
+}
+
+.image-compliance{
+  float:right;
+
+}
+.category-circle-container{
+  float:left;
+
+}
+
+.GDPRLabel{
+  padding: 5px 5px;
+  font: 28px bold;
+  float: left;
+  color: #000000;
+  padding-bottom: 15px;
+  background-color: #e9e8e8
+}
+
+article#main-col{
+  float:left;
+  width:65%;
+}
+
+/* comp-html */
+ul#comp-html li{
+  list-style: none;
+  padding:20px;
+  border: #cccccc solid 2px;
+  margin-bottom:9px;
+  background:#f0f0f0;
+}
+
+
+
+  /* Media Queries */
+  @media(max-width: 768px){
+    header #branding,
+    header nav,
+    header nav li,
+    #newsletter h1,
+    #newsletter form,
+    #boxes .box,
+    article#main-col,
+    aside#sidebar{
+      float:none;
+      text-align:center;
+      width:100%;
+    }
+  
+    header{
+      padding-bottom:20px;
+    }
+  
+    #showcase h1{
+      margin-top:40px;
+    }
+  
+  }
+  

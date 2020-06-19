@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+  <section id="main">
+    <div class="container">
+        {% from '/includes/_formhelpers.html' import render_field %}
+        <form method="POST" action="">
+            <article id="main-col">
+                <h1 class="page-title">Privacy Policy</h1>
+                <div class="form-group shadow-textarea">
+                  <textarea class="form-control z-depth-1" name=policyText id="exampleFormControlTextarea6" rows="10" placeholder="Enter policy here..."></textarea>
+                  <label>Or upload a .txt file</label>
+                  <br>
+                  <input type="file" id="policyFile" name="policyFile" accept=".txt"> 
+                </div>
+               <p><input type="submit" class = "button" value="Find Compliance" onclick="myFunction()"></p>
+            </article>
+        
+              <aside id="sidebar">
+                <div class="dark">
+                  <h3>Select a Law:</h3>
+                  <select id="laws" name="lawSelected">
+                    <option value="GDPR">EUROPE - GDPR</option>
+                    <option value="PIPEDA">Canada - PIPEDA</option>
+                    <option value="PDPC">Singapore - PDPC</option>
+                    <option value="PC">US - Privacy Shield</option>
+                  </select>
+                </div>
+              </aside>
+        </form>
+        <div id="loading" style="display:none;"><div id = "circle">
+          <div class="loader"></div>
+      </div>
+      
+      <div class = "space"><p id="processingText">Processing...</p></div></div>
+    </div>
+    <script>
+      function myFunction(){
+        document.getElementById("loading").style.display = "block"
+        document.getElementById("main-col").style.display = "none"
+        document.getElementById("sidebar").style.display = "none"
+      }
+    </script>
+  </section>
+
+  {% endblock %}

@@ -15,4 +15,4 @@ python app.py
 
 It starts running on port number 5001.
 
-To view the complince score, simply enter the privacy policy and select a law. For now, only GDPR is available.
+To view the compliance score, simply enter the privacy policy and select a law. For now, only GDPR and PDPA are available.
