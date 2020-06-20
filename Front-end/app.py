@@ -9,11 +9,8 @@ app = Flask(__name__)
 
 '''CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-
-
 client = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
 client.conf.update(app.config)
-
 @client.task
 def get_results(policyText, law):
     
@@ -25,9 +22,7 @@ def get_results(policyText, law):
     complianceResults = FindCompliance(PolicyFile)
     imageNames, complianceResults = getImageName(complianceResults)
     #print(imageNames)
-
     # print(imageNames['CompScore'])
-
     return render_template('compliance.html', imageNames=imageNames, complianceResults=complianceResults)
 '''
 

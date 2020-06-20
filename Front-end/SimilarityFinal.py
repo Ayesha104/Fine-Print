@@ -31,7 +31,7 @@ np.random.seed(10)
 # In[22]:
 
 
-model = hub.load("usen")
+model = hub.load("USEmodel")
 #module_url = "https://tfhub.dev/google/universal-sentence-encoder/4" 
 #model = hub.load(module_url)
 #print ("module %s loaded" % module_url)
@@ -95,7 +95,7 @@ def simscore(policylist, lawseg,policy,law):
 # In[38]:
 
 
-def compScore(scoret,maxs=0.6,mins=0.25):
+def compScore(scoret,maxs,mins):
     #with sess.as_default():
     
     #print (tf.size(score))
@@ -105,9 +105,15 @@ def compScore(scoret,maxs=0.6,mins=0.25):
     #        comp[i]=100
     score=scoret.numpy()
     score=score*(-1)
-    score[score < mins]=mins
-    score[score>maxs]=maxs
-    score=(maxs-score)/(maxs-mins)
+    #if pdpc thresholds
+    if (maxs<mins):
+        score[score > mins]=mins
+        score[score<maxs]=maxs
+        score=(mins-score)/(mins-maxs)  
+    else:   #if gdpr  
+        score[score < mins]=mins
+        score[score>maxs]=maxs
+        score=(maxs-score)/(maxs-mins)
     #print (score.shape)
     score=score*100
     return score 
@@ -116,7 +122,15 @@ def compScore(scoret,maxs=0.6,mins=0.25):
 # In[41]:
 
 
-def getCompliance(policyfile,lawfile):
+def getCompliance(policyfile, lawfile, lawname):
+    maxs=0.0
+    mins=0.0
+    if (lawname=="GDPR"):
+        maxs=0.6
+        mins=0.25
+    else:
+        maxs=0.09
+        mins=0.5
     avgscore=[0.0]*4
     policy=pd.read_csv(policyfile,engine ='python')
     #print (policy)
@@ -124,14 +138,14 @@ def getCompliance(policyfile,lawfile):
     #print (law)
     Policycat=['firstparty','thirdparty','userchoice','dataretention','useraccess']
     lawseg=[1,3,4,5]
-    #For gdpt1polic
+    #For gdpt1polic PDPA purpose-1 #first party and third party
     PolicyList1=(list(policy[policy[Policycat[0]] == 1].Segment))
     PolicyList1.extend(list(policy[policy[Policycat[1]] == 1].Segment))
     pl1=np.unique(PolicyList1)
     if len(pl1)>0:
         score1,lawnum,polnum=simscore(pl1,lawseg[0],policy,law)
         #print (score1)
-        comp1=compScore(score1)
+        comp1=compScore(score1,maxs,mins)
         avgscore[0]=sum(comp1)/len(comp1)
         with open("gdpr1.csv", 'w', newline='') as file:
             writer = csv.writer(file)
@@ -147,11 +161,11 @@ def getCompliance(policyfile,lawfile):
             writer.writerow(["PolicySegment","SubSegment","Score"])
             file.close()
     
-    #gdpr3
+    #gdpr3 - PDPA consent - User choice
     PolicyList1=(list(policy[policy[Policycat[2]] == 1].Segment))
     if len(PolicyList1)>0:
         score1,lawnum,polnum=simscore(PolicyList1,lawseg[1],policy,law)
-        comp1=compScore(score1)
+        comp1=compScore(score1,maxs,mins)
         avgscore[1]=sum(comp1)/len(comp1)
         with open("gdpr3.csv", 'w', newline='') as file:
             writer = csv.writer(file)
@@ -167,11 +181,11 @@ def getCompliance(policyfile,lawfile):
             writer.writerow(["PolicySegment","SubSegment","Score"])
             file.close()
         
-    #gdpr4
+    #gdpr4 - PDPA correction - User access
     PolicyList1=(list(policy[policy[Policycat[4]] == 1].Segment))
     if len(PolicyList1)>0:
-        score1,lawnum,polnum=simscore(PolicyList1,lawseg[2],policy,law)
-        comp1=compScore(score1)
+        score1,lawnum,polnum=simscore(PolicyList1,lawseg[3],policy,law)
+        comp1=compScore(score1,maxs,mins)
         avgscore[2]=sum(comp1)/len(comp1)
         with open("gdpr4.csv", 'w', newline='') as file:
             writer = csv.writer(file)
@@ -187,11 +201,11 @@ def getCompliance(policyfile,lawfile):
             writer.writerow(["PolicySegment","SubSegment","Score"])
             file.close()
 
-    #gdpr5
+    #gdpr5 PDPA retention
     PolicyList1=(list(policy[policy[Policycat[3]] == 1].Segment))
     if len(PolicyList1)>0:
-        score1,lawnum,polnum=simscore(PolicyList1,lawseg[3],policy,law)
-        comp1=compScore(score1)
+        score1,lawnum,polnum=simscore(PolicyList1,lawseg[2],policy,law)
+        comp1=compScore(score1,maxs,mins)
         avgscore[3]=sum(comp1)/len(comp1)
         with open("gdpr5.csv", 'w', newline='') as file:
             writer = csv.writer(file)
@@ -213,10 +227,10 @@ def getCompliance(policyfile,lawfile):
     
     return {
         "compliance": round(totalscore,2),
-        "GDPR1": round(avgscore[0],2),
-        "GDPR3": round(avgscore[2],2),
-        "GDPR4" :round(avgscore[3],2),
-        "GDPR2": round(avgscore[1],2),
+        "GDPR1": round(avgscore[0],2), #PDPA PURPOSE
+        "GDPR3": round(avgscore[2],2), #PDPA PDPA correction 
+        "GDPR4" :round(avgscore[3],2), #PDPA Data Retention
+        "GDPR2": round(avgscore[1],2), #PDPA CONSENT
        }
     
 
@@ -228,7 +242,3 @@ def getCompliance(policyfile,lawfile):
 
 
 # In[ ]:
-
-
-
-

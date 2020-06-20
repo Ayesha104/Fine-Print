@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <section id="main">
+        <div class="container">
+            <bR>
+            <label class = "compLabel">Total Compliance with the PDPA:</label>
+            <div class = "container-img-main">
+                <img src={{imageNames.CompScore}}>
+                <div class="centered-main">{{complianceResults.compliance}}</div>
+            </div>
+       
+
+
+        <article id="main-col">
+            <h1 class="page-title">Details</h1>
+            <ul id="comp-html">
+
+              <li>
+                <h3 title="Consent should only be taken for data that is essential to provide a given service to users. Users’ data can only be obtained or disclosed for the purposes for which the user was informed about. Users should also be made aware of the reasons for data collection.">Collection and use of Personal Data - Purpose:</h3>
+                <div class = "container-img">
+                    <img src={{imageNames.GDPR1}}>
+                    <div class="centered"><h3>{{complianceResults.GDPR1}}</h3></div>
+                    <img src="../static/img/membership.png" alt="Data being collected" class = "image-compliance">       
+                    <br>
+                </div>
+                      
+              </li>
+
+              <li>
+                <h3 title= "An organization should first ask customers to give consent to collect, use or disclose their personal data. Users should also have the ability to withdraw consent.">Collection and disclosure of Personal Data - Consent:</h3>             
+                
+                 <div class = "container-img">
+                        <img src={{imageNames.GDPR2}}>
+                        <div class="centered"><h3>{{complianceResults.GDPR2}}</h3></div>
+                        <img src="../static/img/processed.png" alt="how data being processed" class = "image-compliance">
+                        <br>
+                    </div>
+             </li>
+
+              <li>
+                <h3 title= "If customers request, they should be provided with their collected personal data along with the ways in which the data was collected and used in the timeframe of a year. Users can also request to get their data updated to fix any errors.">Accountability - Access and Correction:</h3>             
+                <div class = "container-img">
+                    <img src={{imageNames.GDPR3}}>
+                    <div class="centered"><h3>{{complianceResults.GDPR3}}</h3></div>
+                    <img src="../static/img/person.png" alt="Data retention" class = "image-compliance">       
+                    <br>
+                </div>
+                      
+              </li>
+
+              <li>
+                <h3 title="Data should be deleted once the purpose it was collected for has been fulfilled. Keeping data longer than needed for business reasons is prohibited.">Care of Personal Data - Retention:</h3>             
+                <div class = "container-img">
+                    <img src={{imageNames.GDPR4}}>
+                    <div class="centered"><h3>{{complianceResults.GDPR4}}</h3></div>
+                    <img src="../static/img/retention.png" alt="contact info" class = "image-compliance">       
+                    <br>
+                </div>
+                <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+              </li>
+        
+            </ul>
+          </article>
+        </div> <!--container ends-->
+    </section> <!--main ends-->
+
+    
+
+  {% endblock %}
